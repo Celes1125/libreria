@@ -9,15 +9,14 @@ public class User {
     public String email;
     private String password;
     public String birthday;
-    public String userType;
 
-    public User(String name, String lastName, String email, String password, String birthday, String userType) {
+    public User(String name, String lastName, String email, String password, String birthday) {
         this.name = name;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.birthday = birthday;
-        this.userType = userType;
+
     }
 
 
@@ -61,13 +60,6 @@ public class User {
         this.birthday = birthday;
     }
 
-    public String getUserType() {
-        return userType;
-    }
-
-    public void setUserType(String userType) {
-        this.userType = userType;
-    }
 
     @Override
     public String toString() {
@@ -76,8 +68,7 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", birthday=" + birthday +
-                ", userType='" + userType + '\'' +
+                ", birthday=" + birthday + '\'' +
                 '}';
     }
 }

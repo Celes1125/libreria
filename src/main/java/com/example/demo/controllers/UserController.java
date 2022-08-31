@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import com.example.demo.models.Client;
 import com.example.demo.models.User;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -21,7 +22,7 @@ public class UserController {
             @RequestParam (value = "birthday") String birthday,
             @RequestParam (value = "userType") String userType
             ) {
-        return new User (name, lastName, email, password, birthday, userType ) ;
+        return new Client (name, lastName, email, password, birthday) ;
 
     }
 }
