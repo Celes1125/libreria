@@ -4,6 +4,11 @@ public class Seller extends User{
     public int sellerId;
     private int salesAmount;
 
+
+    public Seller(String name, String lastName, String email, String password, String birthday) {
+        super(name, lastName, email, password, birthday);
+    }
+
     public Seller(String name, String lastName, String email, String password, String birthday, int sellerId, int salesAmount) {
         super(name, lastName, email, password, birthday);
         this.sellerId = sellerId;
