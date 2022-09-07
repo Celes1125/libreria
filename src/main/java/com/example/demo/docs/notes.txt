@@ -6,3 +6,12 @@
         users.add("Hernán", "hernan@gmail.com", 543210);
         return users;
     }
+
+
+    public static void addDefaultUsers () {
+            users.add(new User("Guillermo", "guille@gmail.com", 1234555));
+            users.add(new User("Ana", "ana@gmail.com", 7755));
+            users.add(new User("Cande", "cande@gmail.com", 77852));
+            users.add(new User("Gastón", "gas@gmail.com", 1245555));
+
+

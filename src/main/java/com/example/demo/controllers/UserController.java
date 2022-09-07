@@ -4,6 +4,7 @@ import com.example.demo.models.User;
 import com.example.demo.services.userService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
@@ -28,5 +29,29 @@ public class UserController {
 
     ) {
         return userService.createUsers(name, email, password);
+    };
+
+    @GetMapping (
+            value = "/users",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    @ResponseBody
+    public ArrayList<User> getUsers ( ) {
+        return userService.getAllUsers();
     }
+
+    @GetMapping (
+            value = "/users/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    @ResponseBody
+    public ResponseEntity<?> getUserById (
+            @PathVariable (name = "id") int id
+    ) {
+        return userService.getUserById(id);
+    }
+
+
+
+
 }
