@@ -1,0 +1,8 @@
+  private ArrayList<User> getUser() {
+        ArrayList<User> users = new ArrayList<>();
+
+        users.add("Celeste", "colautti@gmail.com", 123456);
+        users.add("Gonzalo", "gonzalo@gmail.com", 0303456);
+        users.add("Hernán", "hernan@gmail.com", 543210);
+        return users;
+    }
