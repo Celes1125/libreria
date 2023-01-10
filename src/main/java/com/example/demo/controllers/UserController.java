@@ -1,8 +1,9 @@
 package com.example.demo.controllers;
 
 import com.example.demo.models.User;
-import com.example.demo.services.userService;
+import com.example.demo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,9 +12,9 @@ import java.util.ArrayList;
 @RestController
 public class UserController {
     @Autowired
-    private final userService userService;
+    private final UserService userService;
 
-    public UserController(com.example.demo.services.userService userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 
@@ -22,13 +23,10 @@ public class UserController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     @ResponseBody
-    public ArrayList<User> createUsers (
-            @RequestParam (value = "name") String name,
-            @RequestParam (value = "email") String email,
-            @RequestParam (value = "password") int password
-
+    public ResponseEntity<ArrayList<User>> createUsers (
+            @RequestBody User newUser
     ) {
-        return userService.createUsers(name, email, password);
+        return userService.createUsers(newUser);
     };
 
     @GetMapping (
@@ -36,7 +34,7 @@ public class UserController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     @ResponseBody
-    public ArrayList<User> getUsers ( ) {
+    public ResponseEntity<ArrayList<User>> getAllUsers ( ) {
         return userService.getAllUsers();
     }
 
@@ -45,12 +43,22 @@ public class UserController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     @ResponseBody
-    public ResponseEntity<?> getUserById (
-            @PathVariable (name = "id") int id
+    public ResponseEntity<User> getUserById (
+            @RequestParam (name = "email") String email
     ) {
-        return userService.getUserById(id);
+        return userService.getUserById(email);
     }
 
+    @PutMapping (
+            value = "/users",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    @ResponseBody
+    public ResponseEntity<ArrayList<User>> setUsers (
+            @RequestBody User user
+    ) {
+        return new ResponseEntity<>(userService.setUsers(user), HttpStatus.OK);
+    };
 
 
 

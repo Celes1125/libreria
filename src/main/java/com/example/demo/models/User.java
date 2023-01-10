@@ -1,20 +1,13 @@
 package com.example.demo.models;
 
-import java.util.ArrayList;
-
 public class User {
 
-    private int id;
     private String name;
     private String email;
-    private int password;
+    private long password;
 
 
-    public User(int id, String name, String email, int password) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.password = password;
+    public User() {
     }
 
     public User(String name, String email, int password) {
@@ -23,13 +16,9 @@ public class User {
         this.password = password;
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+
+
 
     public String getName() {
         return name;
@@ -47,19 +36,18 @@ public class User {
         this.email = email;
     }
 
-    public int getPassword() {
+    public long getPassword() {
         return password;
     }
 
-    public void setPassword(int password) {
+    public void setPassword(long password) {
         this.password = password;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", password=" + password +
                 '}';

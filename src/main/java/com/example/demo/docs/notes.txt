@@ -1,17 +1,16 @@
-  private ArrayList<User> getUser() {
-        ArrayList<User> users = new ArrayList<>();
-
-        users.add("Celeste", "colautti@gmail.com", 123456);
-        users.add("Gonzalo", "gonzalo@gmail.com", 0303456);
-        users.add("Hernán", "hernan@gmail.com", 543210);
-        return users;
+public ResponseEntity<ArrayList<User>> createUsers(User newUser) {
+        CategoriesSingleton cs = CategoriesSingleton.getInstance();
+        ArrayList<User> users = cs.getUsers();
+        User user = users.stream()
+                        .filter(u -> Objects.equals(u.getEmail(), newUser.getEmail()))
+                                .findFirst()
+                                        .orElse(null);
+        if(user==null){
+            users.add (newUser);
+            cs.setUsers(users);
+            return new ResponseEntity<>(users, HttpStatus.CREATED);
+        }else{
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
-
-
-    public static void addDefaultUsers () {
-            users.add(new User("Guillermo", "guille@gmail.com", 1234555));
-            users.add(new User("Ana", "ana@gmail.com", 7755));
-            users.add(new User("Cande", "cande@gmail.com", 77852));
-            users.add(new User("Gastón", "gas@gmail.com", 1245555));
-
 
